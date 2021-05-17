@@ -14278,7 +14278,7 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>For the purposes of our analysis we will look at economic indicators for the 15 constituent Soviet Socialist Republics of the Soviet Union, as well as the non-Soviet members of the Warsaw Pact, the military alliance of socialist states that defined the Eastern Bloc.</p>
-<p>We will retrieve our data from the World Bank, which hosts open data on a host of economic indicators for practically every country in the world at <a href="https://data.worldbank.org">data.worldbank.org</a>. In our particular case, we have downloaded tables for GDP per capita, PPP (constant 2017 international $) as CSVs and will manipulate them. <strong>DISCUSS CHOICE OF PPP, GDP PER CAPITA, Constant 2017 INTERNATIONAL</strong></p>
+<p>We will retrieve our data from the World Bank, which hosts open data on a host of economic indicators for practically every country in the world at <a href="https://data.worldbank.org">data.worldbank.org</a>. In our particular case, we have downloaded tables for GDP per capita, PPP (constant 2017 international Dolars) as CSVs and will manipulate them, using them as a metric for economic success/failure in the post-collapse decade. By looking at GDP Per Capita, we are able to normalize for the effects of total population on size on the economy, looking at the economic productivity per citizen. Additionally, by quantifying this in Purchasing Power Parity, we are able to look at the real material wealth an average citizen could leverage within each nation, normalizing for commodity prices differences. Finally, we take all data in constant 2017 Internation Dollars to account for inflation. This way we can see the real trends in economic productivity.</p>
 <p>As we will be looking at a handful of economic indicators over a decade, with one measurement per country per year, a Pandas dataframe will more than suffice to hold and manipulate our data.</p>
 
 </div>
@@ -15527,6 +15527,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1990-Total-GDP">1990 Total GDP<a class="anchor-link" href="#1990-Total-GDP">&#182;</a></h3><p>The first metric we will consider is each nation's total GDP in 1990. Intuitively, we would like to know whether the total size of a nation's economy was predictor of how it did in the coming decade. As the communist system was highly centralized and its collapse meant a rise in trade barriers, and breakdown of large systems, we would expect total size to have some effect.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15602,6 +15603,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The initial plot is not highly informative as Russia skews it far to the right with its large economy. To get a clearer view we can apply a logarithm.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15651,23 +15653,16 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Having applied a logarithm, there does appear to be a general positive trend in terms of larger economies in 1990 being more succesful. Notably, Ukraine and Russia appear to be outliers, underperforming despite their large size.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1990-Oil-Rents-(\%-GDP)">1990 Oil Rents (\% GDP)<a class="anchor-link" href="#1990-Oil-Rents-(\%-GDP)">&#182;</a></h3><p>The next variable we will look it is how much of a nations economy in 1990 consisted of oil profits. Since wealth arising from natural resource extraction has a different elasticity to that from other means, we may see differences between nations with more or less reliance.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15801,6 +15796,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1990-GDP-Per-Capita">1990 GDP Per Capita<a class="anchor-link" href="#1990-GDP-Per-Capita">&#182;</a></h3><p>The last variable we will look at will be the initial GDP per capita. In essence, did those nations that started ahead stay ahead, or did they have further to fall?</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15869,20 +15865,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>By inspection, there appears to be a general positive trend, though Ukrain, Poland, and Russia are all outliers.</p>
 
-     </div>
 </div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -15913,6 +15901,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">lr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">p_values</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;P&gt;|t|&#39;</span><span class="p">]</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15959,108 +15948,6 @@ c:\users\misha\appdata\local\programs\python\python37\lib\site-packages\scipy\st
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[138]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>c:\users\misha\appdata\local\programs\python\python37\lib\site-packages\scipy\stats\stats.py:1604: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=15
-  &#34;anyway, n=%i&#34; % int(n))
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[138]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<table class="simpletable">
-<tr>
-        <td>Model:</td>               <td>OLS</td>         <td>Adj. R-squared:</td>     <td>0.274</td> 
-</tr>
-<tr>
-  <td>Dependent Variable:</td>         <td>y</td>               <td>AIC:</td>         <td>142.8569</td>
-</tr>
-<tr>
-         <td>Date:</td>        <td>2021-05-17 15:46</td>        <td>BIC:</td>         <td>145.6891</td>
-</tr>
-<tr>
-   <td>No. Observations:</td>         <td>15</td>          <td>Log-Likelihood:</td>    <td>-67.428</td>
-</tr>
-<tr>
-       <td>Df Model:</td>              <td>3</td>           <td>F-statistic:</td>       <td>2.760</td> 
-</tr>
-<tr>
-     <td>Df Residuals:</td>           <td>11</td>        <td>Prob (F-statistic):</td>  <td>0.0924</td> 
-</tr>
-<tr>
-      <td>R-squared:</td>            <td>0.429</td>            <td>Scale:</td>         <td>640.81</td> 
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-    <td></td>      <th>Coef.</th>   <th>Std.Err.</th>    <th>t</th>     <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th> 
-</tr>
-<tr>
-  <th>const</th> <td>-228.7672</td> <td>186.6839</td> <td>-1.2254</td> <td>0.2460</td> <td>-639.6556</td> <td>182.1212</td>
-</tr>
-<tr>
-  <th>x1</th>     <td>19.2511</td>   <td>18.3490</td> <td>1.0492</td>  <td>0.3166</td> <td>-21.1348</td>   <td>59.6371</td>
-</tr>
-<tr>
-  <th>x2</th>    <td>-17.3928</td>   <td>7.3945</td>  <td>-2.3521</td> <td>0.0383</td> <td>-33.6679</td>   <td>-1.1177</td>
-</tr>
-<tr>
-  <th>x3</th>     <td>-0.0008</td>   <td>0.0020</td>  <td>-0.3836</td> <td>0.7086</td>  <td>-0.0051</td>   <td>0.0036</td> 
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-     <td>Omnibus:</td>     <td>1.474</td>  <td>Durbin-Watson:</td>    <td>2.707</td>
-</tr>
-<tr>
-  <td>Prob(Omnibus):</td>  <td>0.479</td> <td>Jarque-Bera (JB):</td>  <td>1.170</td>
-</tr>
-<tr>
-       <td>Skew:</td>     <td>-0.609</td>     <td>Prob(JB):</td>      <td>0.557</td>
-</tr>
-<tr>
-     <td>Kurtosis:</td>    <td>2.375</td>  <td>Condition No.:</td>   <td>375232</td>
-</tr>
-</table>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
